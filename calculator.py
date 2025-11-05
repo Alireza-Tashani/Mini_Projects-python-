@@ -5,8 +5,17 @@ def get_order(string , endnum):
             num = int(input(string))
             if endnum < num:
                 raise Exception()
+            return num
         except:
             print('this order not a number or out of range')
+            
+def get_num(string):
+    while True:
+        try:
+            num = float(input(string))
+            return num
+        except:
+            print('please enter a number ...')
 def main():
     print('hi\nwelcome to calculator')
     while True:
@@ -16,9 +25,11 @@ def main():
         print('4. dev')
         print('5. exit')
         
-        choose = get_order('enter order :')
-        num1 = float(input('enter num : '))
-        num2 = float(input('enter num : '))
+        choose = get_order('enter order :',5)
+        if choose == 5 :
+            break
+        num1 = get_num('enter num 1: ')
+        num2 = get_num('enter num 2: ')
         match choose:
             case 1:
                 print(f'{num1}+{num2} = {num1+num2}')
@@ -34,8 +45,7 @@ def main():
                 else:
                     print('cant calculate it becuse num2 is 0')
 
-            case 5 :
-                break
+          
 
 if __name__ == "__main__":
     main()
