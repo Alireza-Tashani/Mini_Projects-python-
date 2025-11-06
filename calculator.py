@@ -16,6 +16,11 @@ def get_num(string):
             return num
         except:
             print('please enter a number ...')
+            
+def fact(num):
+    if num ==1 :
+        return 1
+    return num*fact(num-1)
 def main():
     print('hi\nwelcome to calculator')
     while True:
@@ -23,12 +28,18 @@ def main():
         print('2. min')
         print('3. mul')
         print('4. dev')
-        print('5. exit')
+        print('5. fact')
+        print('6. exit')
         
-        choose = get_order('enter order :',5)
-        if choose == 5 :
+        choose = get_order('enter order :',6)
+        if choose == 6:
             break
         num1 = get_num('enter num 1: ')
+        if choose == 5 :
+            print(f'{num1}! = {fact(num1)}')
+            continue
+        
+        
         num2 = get_num('enter num 2: ')
         match choose:
             case 1:
@@ -44,6 +55,7 @@ def main():
                     print(f'{num1}/{num2} = {num1/num2}')
                 else:
                     print('cant calculate it becuse num2 is 0')
+                
 
           
 
