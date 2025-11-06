@@ -80,8 +80,9 @@ def main():
     users = read_users()
     username = input('enter your name (username for game) : ')
     sign_up(username)
-    bestplayer()
     game(username)
+    bestplayer()
+    
     
 
 
