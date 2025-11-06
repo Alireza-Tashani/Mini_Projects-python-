@@ -28,10 +28,23 @@ def read_users():
         reader = csv.reader(f)
         return list(reader)
     
-
-def game():
+def give_score(username):
+    for i in users:
+        if i[0] == username :
+            return i[1]
+def update(username,score):
+    for i in users:
+        if i[0] == username:
+            i[1] = score
+            commit()
+        
+def game(username):
     random_int = random.randint(0,101)
     chance = 0
+    score =0
+    if not check_user(username):
+        score=int( give_score(username))
+    
 
     while True:
         input_usr = int(input('enter your number : '))
@@ -43,8 +56,13 @@ def game():
             chance+=1
         else:
             chance+=1
-            print(f'you won number was {random_int} in {chance} time')
-
+            newscore = round((10/chance)*100)
+            print(f'you won number was {random_int} in {newscore} score')
+            
+            if score>newscore:
+                update(username , score)
+            else:
+                update(username , newscore)
             break
 
 def main():
@@ -52,7 +70,8 @@ def main():
     users = read_users()
     username = input('enter your name (username for game) : ')
     sign_up(username)
-    # game()
+    
+    game(username)
 
 
 if __name__ == "__main__":
